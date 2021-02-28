@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/division-game/static/css/main.f540d89a.chunk.css",
+    "main.js": "/division-game/static/js/main.b1ba3d6c.chunk.js",
+    "main.js.map": "/division-game/static/js/main.b1ba3d6c.chunk.js.map",
+    "runtime-main.js": "/division-game/static/js/runtime-main.8225801d.js",
+    "runtime-main.js.map": "/division-game/static/js/runtime-main.8225801d.js.map",
+    "static/js/2.1e1d337c.chunk.js": "/division-game/static/js/2.1e1d337c.chunk.js",
+    "static/js/2.1e1d337c.chunk.js.map": "/division-game/static/js/2.1e1d337c.chunk.js.map",
+    "static/js/3.aefde178.chunk.js": "/division-game/static/js/3.aefde178.chunk.js",
+    "static/js/3.aefde178.chunk.js.map": "/division-game/static/js/3.aefde178.chunk.js.map",
+    "index.html": "/division-game/index.html",
+    "static/css/main.f540d89a.chunk.css.map": "/division-game/static/css/main.f540d89a.chunk.css.map",
+    "static/js/2.1e1d337c.chunk.js.LICENSE.txt": "/division-game/static/js/2.1e1d337c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8225801d.js",
+    "static/js/2.1e1d337c.chunk.js",
+    "static/css/main.f540d89a.chunk.css",
+    "static/js/main.b1ba3d6c.chunk.js"
+  ]
+}
