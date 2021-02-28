@@ -30,7 +30,12 @@ function App() {
     while (answers.size < 4) {
       answers.add(getRandomInt(maxNumber) + 1);
     }
-    return Array.from(answers).sort((a, b) => a - b);
+    return Array.from(answers).sort((a, b) => a - b) as [
+      number,
+      number,
+      number,
+      number
+    ];
   }, [currentProblem]);
   const { dividend, divisor, quotient } = currentProblem;
 
@@ -55,40 +60,14 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ display: "flex", flex: 1 }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flex: 1,
-            alignItems: "flex-end",
-            justifyContent: "flex-end",
-          }}
-        >
-          <div style={{ flex: 1 }}></div>
-          <div style={{ flex: 1, fontSize: 32, padding: 6, marginTop: 19 }}>
-            {divisor}
-          </div>
-          <div style={{ flex: 1 }}></div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flex: 1,
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "flex-start",
-          }}
-        >
-          <div
+      <Problem>
+        <>
+          <span>{dividend}</span>
+          <span>÷</span>
+          <span>{divisor}</span>
+          <span>=</span>
+          <span
             style={{
-              flex: 1,
-              fontSize: 32,
-              display: "flex",
-              alignItems: "flex-end",
-              borderBottom: "1px solid black",
-              padding: 6,
-              width: "20%",
               color:
                 guessedAnswer === null
                   ? "gray"
@@ -98,93 +77,59 @@ function App() {
             }}
           >
             {guessedAnswer || "?"}
-          </div>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-            <div
-              style={{
-                padding: 6,
-                flex: "none",
-                borderLeft: "1px solid black",
-                fontSize: 32,
-              }}
-            >
-              {dividend}
-            </div>
-            <div style={{ flex: 1 }}></div>
-          </div>
-
-          <div style={{ flex: 1 }}></div>
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flex: 1,
-          justifyContent: "stretch",
-          alignItems: "center",
-          width: "100%",
-        }}
-      >
-        <div style={{ display: "flex", flex: 1, width: "100%" }}>
-          <button
-            style={{ width: "50%", fontSize: 24 }}
-            onClick={() => {
-              if (!guessCorrect) {
-                guess(answers[0]);
-              }
-            }}
-          >
-            {answers[0]}
-          </button>
-          <button
-            style={{ width: "50%", fontSize: 24 }}
-            onClick={() => {
-              if (!guessCorrect) {
-                guess(answers[1]);
-              }
-            }}
-          >
-            {answers[1]}
-          </button>
-        </div>
-        <div style={{ display: "flex", flex: 1, width: "100%" }}>
-          <button
-            style={{ width: "50%", fontSize: 24 }}
-            onClick={() => {
-              if (!guessCorrect) {
-                guess(answers[2]);
-              }
-            }}
-          >
-            {answers[2]}
-          </button>
-          <button
-            style={{ width: "50%", fontSize: 24 }}
-            onClick={() => {
-              if (!guessCorrect) {
-                guess(answers[3]);
-              }
-            }}
-          >
-            {answers[3]}
-          </button>
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "space-evenly",
-        }}
-      >
-        <div>Nubmer correct: {numberCorrect}</div>
-        <div>Number wrong: {numberWrong}</div>
-      </div>
+          </span>
+        </>
+      </Problem>
+      <Answers answers={answers} guess={guess}></Answers>
+      <Results
+        numberCorrect={numberCorrect}
+        numberWrong={numberWrong}
+      ></Results>
     </div>
   );
 }
+
+const Problem: React.FC<{}> = ({ children }) => {
+  return <div className="problem">{children}</div>;
+};
+
+const Answers: React.FC<{
+  answers: [number, number, number, number];
+  guess: (value: number) => void;
+}> = ({ answers, guess }) => {
+  return (
+    <div className="answers">
+      <div style={{ height: "50%", width: "100%" }}>
+        <button onClick={() => guess(answers[0])}>{answers[0]}</button>
+        <button onClick={() => guess(answers[1])}>{answers[1]}</button>
+      </div>
+      <div style={{ height: "50%", width: "100%" }}>
+        <button onClick={() => guess(answers[2])}>{answers[2]}</button>
+        <button onClick={() => guess(answers[3])}>{answers[3]}</button>
+      </div>
+    </div>
+  );
+};
+
+const Results: React.FC<{ numberCorrect: number; numberWrong: number }> = ({
+  numberCorrect,
+  numberWrong,
+}) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        height: "33.33%",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+      }}
+    >
+      <div>Nubmer correct: {numberCorrect}</div>
+      <div>Number wrong: {numberWrong}</div>
+    </div>
+  );
+};
 
 export default App;

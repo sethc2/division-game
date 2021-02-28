@@ -9,6 +9,37 @@
   flex-direction: column;
 }
 
+.problem {
+  display: flex;
+  height: 33.33%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.problem span {
+  font-size: 32px;
+  padding: 4px;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  height: 33.33%;
+  width: 100%;
+}
+
+.answers > div {
+  height: 50%;
+  width: 100%;
+}
+
+.answers > div > button {
+  width: 50%;
+  height: 100%;
+  font-size: 32px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
